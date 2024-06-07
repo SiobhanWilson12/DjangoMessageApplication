@@ -1,0 +1,93 @@
+# Django Message Application
+
+## How to use the API
+
+1. API endpoints:
+    POST /api/messages/: This endpoint is used to add a new message to the system. Users can send a POST request with the message content in the request body to create a new message.
+    GET /api/messages/list/: This endpoint retrieves a list of all messages stored in the system. Users can send a GET request to this endpoint to retrieve the list of messages.
+    DELETE /api/messages/clear/: This endpoint is used to delete all messages from the system. Users can send a DELETE request to this endpoint to clear all messages.
+    http://localhost:8000/api/messages/view/: This URL can be accessed in a web browser to view the messages stored in the system. It returns an HTML page rendering the messages for easy human consumption.
+
+2. Request payloads:
+    For the POST /api/messages/ endpoint, the request payload should include the content of the message being added. This content could be sent as a JSON object with a field for the message content.
+    For the other endpoints (GET /api/messages/list/ and DELETE /api/messages/clear/), no request payloads are required as they do not expect any additional data in the request body.
+
+3. Response format:
+    The response format for successful requests to the API endpoints typically includes a status code indicating the success of the operation (e.g. 200 OK for successful retrieval), along with the requested data in the response body.
+    For errors, the response format may include an appropriate HTTP status code (e.g. 400 Bad Request for client errors) and an error message explaining the issue.
+
+4. Errors:
+    Common errors that users may encounter include:
+        400 Bad Request: This error indicates that the request was malformed or missing required parameters.
+        404 Not Found: This error occurs when the requested resource does not exist.
+        500 Internal Server Error: This error indicates an unexpected server-side issue.
+
+    Custom error messages:
+        "Content is too long, must be less than 100 characters.": This message advises the user of the limit of 100 characters.
+
+5. Examples using Postman:
+
+    a. POST /api/messages/ - Add a New Message
+        Request:
+            1. Open Postman.
+            2. Select the POST method.
+            3. Enter the URL: http://localhost:8000/api/messages/.
+            4. Go to the Body tab and select raw.
+            5. Choose JSON from the dropdown.
+            6. Enter the following JSON data:
+                {
+                    "content": "Postman test message"
+                }
+            7. Click Send.
+
+        Response:
+            You should receive a response similar to this if the message is successfully created:
+                {
+                    "id": 1,
+                    "content": "Postman test message",
+                    "timestamp": "2024-06-07T12:00:00Z"
+                }    
+
+    b. GET /api/messages/list/ - List All Messages
+        Request:
+            1. Open Postman.
+            2. Select the GET method.
+            3. Enter the URL: http://localhost:8000/api/messages/list/.
+            4. Click Send.
+
+        Response:
+            You should receive a response similar to this if there are messages in the database:
+                [
+                    {
+                        "id": 1,
+                        "content": "Test message",
+                        "timestamp": "2024-06-07T12:00:00Z"
+                    },
+                    {
+                        "id": 2,
+                        "content": "Postman test message",
+                        "timestamp": "2024-06-07T12:05:00Z"
+                    }
+                ]
+    c. DELETE /api/messages/clear/ - Delete All Messages
+        Request:
+            1. Open Postman.
+            2. Select the DELETE method.
+            3. Enter the URL: http://localhost:8000/api/messages/clear/.
+            4. Click Send.
+
+        Response:
+            You should receive a response similar to this if all messages are successfully deleted:
+                {
+                    "message": "All messages have been deleted."
+                }    
+
+    d. View Messages in Browser
+        Open a web browser and navigate to: http://localhost:8000/api/messages/view/
+        This will render an HTML page displaying all the messages stored in the database.
+
+Additional commands:
+    To deactivate the virtual environment:
+        $ deactivate    
+    To stop the development server:
+        press Ctrl + C

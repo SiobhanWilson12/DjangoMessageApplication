@@ -1,0 +1,45 @@
+# Django Message Application
+
+## Setup
+
+Prerequisites:
+    Python 3.x
+    pip (Python package installer)
+
+1. Clone the repository:
+   ```bash
+   $ git clone <repository_url>
+   $ cd django-message-app
+
+2. Create virtual environment and activate it:
+    ```bash
+    $ python -m venv env
+    $ source env/Scripts/activate  # On Mac use $ source env\bin\activate
+
+3. Install dependencies:
+    ```bash
+    $ pip install -r requirements.txt 
+
+4. Apply migrations:   
+    ```bash
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+
+5.  a.  Run development server:
+        ```bash    
+        $ python manage.py runserver
+    b.  Run unit tests:
+        ```bash
+        $ python manage.py test messages_app    
+
+6. API endpoints:
+    POST /api/messages/ - to add a new message
+    GET /api/messages/list/ - to list all messages
+    DELETE /api/messages/clear/ - to delete all messages
+    http://localhost:8000/api/messages/view/ - to view the messages in the browser
+
+Additional commands:
+    To deactivate the virtual environment:
+        $ deactivate    
+    To stop the development server:
+        press Ctrl + C     
