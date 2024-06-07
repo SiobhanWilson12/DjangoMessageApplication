@@ -25,64 +25,82 @@
     Custom error messages:
         "Content is too long, must be less than 100 characters.": This message advises the user of the limit of 100 characters.
 
-5. Examples using Postman:
+5. Examples:
+    Postman:
+        a. POST /api/messages/ - Add a New Message
+            Request:
+                1. Open Postman.
+                2. Select the POST method.
+                3. Enter the URL: http://localhost:8000/api/messages/
+                4. Go to the Body tab and select raw.
+                5. Choose JSON from the dropdown.
+                6. Enter the following JSON data:
+                    {
+                        "content": "Postman test message"
+                    }
+                7. Click Send.
 
-    a. POST /api/messages/ - Add a New Message
-        Request:
-            1. Open Postman.
-            2. Select the POST method.
-            3. Enter the URL: http://localhost:8000/api/messages/.
-            4. Go to the Body tab and select raw.
-            5. Choose JSON from the dropdown.
-            6. Enter the following JSON data:
-                {
-                    "content": "Postman test message"
-                }
-            7. Click Send.
-
-        Response:
-            You should receive a response similar to this if the message is successfully created:
-                {
-                    "id": 1,
-                    "content": "Postman test message",
-                    "timestamp": "2024-06-07T12:00:00Z"
-                }    
-
-    b. GET /api/messages/list/ - List All Messages
-        Request:
-            1. Open Postman.
-            2. Select the GET method.
-            3. Enter the URL: http://localhost:8000/api/messages/list/.
-            4. Click Send.
-
-        Response:
-            You should receive a response similar to this if there are messages in the database:
-                [
+            Response:
+                You should receive a response similar to this if the message is successfully created:
                     {
                         "id": 1,
-                        "content": "Test message",
-                        "timestamp": "2024-06-07T12:00:00Z"
-                    },
-                    {
-                        "id": 2,
                         "content": "Postman test message",
-                        "timestamp": "2024-06-07T12:05:00Z"
-                    }
-                ]
-    c. DELETE /api/messages/clear/ - Delete All Messages
-        Request:
-            1. Open Postman.
-            2. Select the DELETE method.
-            3. Enter the URL: http://localhost:8000/api/messages/clear/.
-            4. Click Send.
+                        "timestamp": "2024-06-07T12:00:00Z"
+                    }    
 
-        Response:
-            You should receive a response similar to this if all messages are successfully deleted:
-                {
-                    "message": "All messages have been deleted."
-                }    
+        b. GET /api/messages/list/ - List All Messages
+            Request:
+                1. Open Postman.
+                2. Select the GET method.
+                3. Enter the URL: http://localhost:8000/api/messages/list/
+                4. Click Send.
 
-    d. View Messages in Browser
+            Response:
+                You should receive a response similar to this if there are messages in the database:
+                    [
+                        {
+                            "id": 1,
+                            "content": "Test message",
+                            "timestamp": "2024-06-07T12:00:00Z"
+                        },
+                        {
+                            "id": 2,
+                            "content": "Postman test message",
+                            "timestamp": "2024-06-07T12:05:00Z"
+                        }
+                    ]
+
+        c. DELETE /api/messages/clear/ - Delete All Messages
+            Request:
+                1. Open Postman.
+                2. Select the DELETE method.
+                3. Enter the URL: http://localhost:8000/api/messages/clear/
+                4. Click Send.
+
+            Response:
+                You should receive a response similar to this if all messages are successfully deleted:
+                    {
+                        "message": "2 messages deleted."
+                    }    
+
+        d. View Messages in Browser
+        Open a web browser and navigate to: http://localhost:8000/api/messages/view/
+        This will render an HTML page displaying all the messages stored in the database.
+
+    Django REST Framework URLs:
+        a. Add a New Message in Browser
+        Open a web browser and navigate to: http://localhost:8000/api/messages/
+        This will allow you to add Content and POST the messages to be stored in the database.
+
+        b. List All Messages in Browser
+        Open a web browser and navigate to: http://localhost:8000/api/messages/list/
+        This will allow you to GET all the messages stored in the database.
+
+        c. Delete All Messages in Browser
+        Open a web browser and navigate to: http://localhost:8000/api/messages/clear/
+        This will to DELETE all the messages stored in the database.
+
+        d. View Messages in Browser
         Open a web browser and navigate to: http://localhost:8000/api/messages/view/
         This will render an HTML page displaying all the messages stored in the database.
 

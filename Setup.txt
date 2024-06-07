@@ -9,7 +9,7 @@ Prerequisites:
 1. Clone the repository:
    ```bash
    $ git clone https://github.com/SiobhanWilson12/DjangoMessageApplication.git
-   $ cd django-message-app
+   $ cd DjangoMessageApplication
 
 2. Create virtual environment and activate it:
     ```bash
@@ -25,12 +25,13 @@ Prerequisites:
     $ python manage.py makemigrations
     $ python manage.py migrate
 
-5.  a.  Run development server:
-        ```bash    
-        $ python manage.py runserver
-    b.  Run unit tests:
+5.  a.  Run unit tests:
         ```bash
-        $ python manage.py test messages_app    
+        $ python manage.py test messages_app
+
+    b.  Run development server:
+        ```bash    
+        $ python manage.py runserver   
 
 6. API endpoints:
     POST /api/messages/ - to add a new message
